@@ -9,31 +9,26 @@ namespace AspNet4WebApiTemplate.Controllers
 {
     public class ValuesController : ApiController
     {
-        // GET api/values
-        public IEnumerable<string> Get()
+        // GET api/values/Action1?id=5
+        [HttpGet]
+        public string Action1(int id)
         {
-            return new string[] { "value1", "value2" };
+            return "value1";
         }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/values
-        public void Post([FromBody] string value)
+        // POST api/values/Action2
+        [HttpPost]
+        public void Action2([FromBody] string value)
         {
         }
 
-        // PUT api/values/5
-        public void Put(int id, [FromBody] string value)
+        // PUT api/values/Action3
+        [HttpPut]
+        public void Action3([FromBody]int id, [FromBody] string value)
         {
         }
 
-        // DELETE api/values/5
-        public void Delete(int id)
-        {
-        }
+        [HttpGet]
+        public string GetById(int id) => $"{id}";
     }
 }

@@ -17,12 +17,6 @@ namespace AspNet4WebApiTemplate
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(Register);
             GlobalFilters.Filters.Add(new HandleErrorAttribute());
-            RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            RouteTable.Routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
         }
 
         static void Register(HttpConfiguration config)
@@ -34,7 +28,7 @@ namespace AspNet4WebApiTemplate
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: "api/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
 
@@ -42,5 +36,4 @@ namespace AspNet4WebApiTemplate
                 .Add(new MediaTypeHeaderValue("text/html"));
         }
     }
-
 }
